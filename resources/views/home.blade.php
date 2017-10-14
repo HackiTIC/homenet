@@ -30,7 +30,7 @@
                 <div class="panel-heading">Homes</div>
 
                 <div class="panel-body">
-                    @foreach (\App\Home::all() as $home)
+                    @foreach (\App\House::all() as $home)
                         {{ print_r($home) }}
                     @endforeach
                 </div>
