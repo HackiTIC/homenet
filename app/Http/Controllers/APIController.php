@@ -6,7 +6,7 @@ use Hash;
 use App\User;
 use App\House;
 use Illuminate\Http\Request;
-use App\Http\Requests\NewHouse;
+//use App\Http\Requests\NewHouse;
 //use App\Http\Requests\NewRoom;
 use App\Http\Requests\RoomRequest;
 use App\Http\Requests\RoomInfo;
@@ -69,11 +69,11 @@ class APIController extends Controller
      * @param  NewHouse $request
      * @return array
      */
-    public function newHouse(NewHouse $request)
+    public function newHouse(Request $request)
     {
         return House::create([
-            'set_temp' => $request->set_temp,
-            'room_id' => $request->room_id,
+            'set_temp' => 25.00,
+            'room_id' => null,
             'api_token' => str_random(60),
             'auth_token' => str_random(10),
         ]);
