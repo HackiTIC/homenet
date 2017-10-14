@@ -81,7 +81,7 @@ class APIController extends Controller
      */
     public function newRoom(NewRoom $request)
     {
-        return $request->user()->rooms->create([
+        return $request->user()->rooms()->create([
             'name' => str_random(5),
             'temp' => $request->temp,
             'light' => $request->light,
