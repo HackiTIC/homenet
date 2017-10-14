@@ -119,7 +119,7 @@ class APIController extends Controller
 
         $this->telegram->sendMessage([
             'chat_id' => $this->channel,
-            'text' => "Created a new room <${$name}>",
+            'text' => "Created a new room <{$name}>",
         ]);
 
         return $request->user()->rooms()->create([
@@ -171,7 +171,7 @@ class APIController extends Controller
 
         $this->telegram->sendMessage([
             'chat_id' => $this->channel,
-            'text' => "Updated room #{$room->id} temperature from <{$room->temp}> to <${$request->temp}>",
+            'text' => "Updated room #{$room->id} temperature from <{$room->temp}> to <{$request->temp}>",
         ]);
 
         return ['status' => $room->update(['temp' => $request->temp])];
@@ -192,7 +192,7 @@ class APIController extends Controller
 
         $this->telegram->sendMessage([
             'chat_id' => $this->channel,
-            'text' => "Updated room #{$room->id} light from <{$room->light}> to <${$request->light}>",
+            'text' => "Updated room #{$room->id} light from <{$room->light}> to <{$request->light}>",
         ]);
 
         return ['status' => $room->update(['light' => $request->light])];
@@ -213,7 +213,7 @@ class APIController extends Controller
 
         $this->telegram->sendMessage([
             'chat_id' => $this->channel,
-            'text' => "Updated room #{$room->id} presence from <{$room->presence}> to <${$request->presence}>",
+            'text' => "Updated room #{$room->id} presence from <{$room->presence}> to <{$request->presence}>",
         ]);
 
         return ['status' => $room->update(['presence' => $request->presence])];
@@ -344,7 +344,7 @@ class APIController extends Controller
 
         $this->telegram->sendMessage([
             'chat_id' => $this->channel,
-            'text' => "Updated room #{$room->id} presence activates light from <{$room->presence_activates_light}> to <${$request->presence_activates_light}>",
+            'text' => "Updated room #{$room->id} presence activates light from <{$room->presence_activates_light}> to <{$request->presence_activates_light}>",
         ]);
 
         return ['status' => $room->update(['presence_activates_light' => $request->presence_activates_light])];
