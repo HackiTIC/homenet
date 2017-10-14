@@ -22,7 +22,11 @@
 
                 <div class="panel-body">
                     @foreach (\App\User::all() as $user)
-                        {{ print_r($user->toArray()) }}
+                        <ul>
+                            @foreach ($user as $key => $value)
+                                <li><b>{{ $key }}:</b> {{ $value }}</li>
+                            @endforeach
+                        </ul>
                     @endforeach
                 </div>
             </div>
@@ -31,7 +35,11 @@
 
                 <div class="panel-body">
                     @foreach (\App\House::all() as $home)
-                        {{ print_r($home->toArray()) }}
+                        <ul>
+                            @foreach ($home as $key => $value)
+                                <li><b>{{ $key }}:</b> {{ $value }}</li>
+                            @endforeach
+                        </ul>
                     @endforeach
                 </div>
             </div>
@@ -40,7 +48,11 @@
 
                 <div class="panel-body">
                     @foreach (\App\Room::all() as $room)
-                        {{ print_r($room->toArray()) }}
+                        <ul>
+                            @foreach ($room as $key => $value)
+                                <li><b>{{ $key }}:</b> {{ $value }}</li>
+                            @endforeach
+                        </ul>
                     @endforeach
                 </div>
             </div>
