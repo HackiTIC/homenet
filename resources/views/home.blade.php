@@ -9,10 +9,10 @@
                 <div class="panel-body">
                     @foreach (auth()->user()->house->rooms as $room)
                         Chart :)
-                        {!!
-                            Charts::realtime(route('realtime.temp', $room), 1500, 'temperature', 'canvas-gauges')
-                                ->render()
-                        !!}
+                        @php
+                            $chart = Charts::realtime(route('realtime.temp', $room), 1500, 'temperature', 'canvas-gauges')
+                        @endphp
+                        {!! $chart->html() !!}
                     @endforeach
                 </div>
             </div>
