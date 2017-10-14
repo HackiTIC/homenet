@@ -22,7 +22,7 @@
 
                 <div class="panel-body">
                     @foreach (\App\User::all() as $user)
-                        {{ print_r($user) }}
+                        {{ print_r($user->toArray()) }}
                     @endforeach
                 </div>
             </div>
@@ -31,16 +31,16 @@
 
                 <div class="panel-body">
                     @foreach (\App\House::all() as $home)
-                        {{ print_r($home) }}
+                        {{ print_r($home->toArray()) }}
                     @endforeach
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading">Users</div>
+                <div class="panel-heading">Rooms</div>
 
                 <div class="panel-body">
                     @foreach (\App\Room::all() as $room)
-                        {{ print_r($room) }}
+                        {{ print_r($room->toArray()) }}
                     @endforeach
                 </div>
             </div>
