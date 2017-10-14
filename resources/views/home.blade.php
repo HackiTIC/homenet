@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Charts</div>
                 <div class="panel-body">
-                    @foreach (optional(auth()->user()->home)->rooms ? optional(auth()->user()->home)->rooms : [] as $room)
+                    @foreach (optional(auth()->user()->house)->rooms ? optional(auth()->user()->home)->rooms : [] as $room)
                         {!!
                             Charts::realtime(route('realtime.temp', $room), 1500, 'temperature', 'canvas-gauges')
                         !!}
