@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 //use App\Http\Requests\NewRoom;
 use App\Http\Requests\RoomRequest;
 use App\Http\Requests\RoomInfo;
+use App\Http\Requests\SetHomeSettings;
 use App\Http\Requests\SetRoomTemp;
 use App\Http\Requests\SetRoomLight;
 use App\Http\Requests\SetRoomPresence;
@@ -222,15 +223,9 @@ class APIController extends Controller
      *
      * @param SetRoomTemp $request
      */
-    public function setAppRoomTemp(SetRoomTemp $request)
+    public function setHomeSettings(SetHomeSettings $request)
     {
-        $room = $request->user()->house->rooms()->where('id', $request->id)->first();
-
-        if (!$room) {
-            return ['error' => 'Unauthorized'];
-        }
-
-        return ['status' => $room->update(['temp' => $request->temp])];
+        return ['status' => $request->user()->house()->update($request->only['temp', 'room_id'])];
     }
 
     /**
