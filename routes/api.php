@@ -55,7 +55,7 @@ Route::as('app.')->prefix('app')->group(function () {
 Route::as('house.')->prefix('house')->group(function () {
     Route::post('new_house', 'APIController@newHouse')->name('new_house');
     Route::middleware('auth:house')->group(function () {
-        Route::post('info', 'APIController@info')->name('info');
+        Route::post('info', 'APIController@houseInfo')->name('info');
         Route::post('rooms', 'APIController@houseRooms')->name('rooms');
         Route::post('new_room', 'APIController@newRoom')->name('new_room');
         Route::post('room', 'APIController@houseRoom')->name('room');
