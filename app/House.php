@@ -12,7 +12,7 @@ class House extends Model
      * @var array
      */
     protected $fillable = [
-        'set_temp', 'room_id', 'api_token', 'auth_token'
+        'set_temp', 'room_id', 'api_token', 'auth_token', 'hysteresis_threshold'
     ];
     /**
      * Return the house users.

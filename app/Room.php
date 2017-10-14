@@ -12,7 +12,7 @@ class Room extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'temp', 'light', 'presence', 'presence_timeout', 'presence_activates_light'
+        'name', 'temp', 'light', 'presence', 'presence_timeout', 'presence_activates_light', 'light_threshold'
     ];
 
     /**
