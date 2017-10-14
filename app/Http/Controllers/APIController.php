@@ -228,7 +228,7 @@ class APIController extends Controller
 
         $this->telegram->sendMessage([
             'chat_id' => $this->channel,
-            'text' => 'Room name changed from <' . $room->name . '> to <' . $request->name . '>';
+            'text' => 'Room name changed from <' . $room->name . '> to <' . $request->name . '>',
         ]);
 
         return ['status' => $room->update(['name' => $request->name])];
