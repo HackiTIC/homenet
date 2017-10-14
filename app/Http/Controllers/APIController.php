@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\NewHouse;
 //use App\Http\Requests\NewRoom;
 use App\Http\Requests\RoomRequest;
+use App\Http\Requests\RoomInfo;
 use App\Http\Requests\SetRoomTemp;
 use App\Http\Requests\SetRoomLight;
 use App\Http\Requests\SetRoomPresence;
@@ -130,7 +131,7 @@ class APIController extends Controller
             return ['error' => 'Unauthorized'];
         }
 
-        return $room->update(['temp' => $request->temp]);
+        return ['status' => $room->update(['temp' => $request->temp])];
     }
 
     /**
@@ -146,7 +147,7 @@ class APIController extends Controller
             return ['error' => 'Unauthorized'];
         }
 
-        return $room->update(['light' => $request->light]);
+        return ['status' => $room->update(['light' => $request->light])];
     }
 
     /**
@@ -162,7 +163,39 @@ class APIController extends Controller
             return ['error' => 'Unauthorized'];
         }
 
-        return $room->update(['presence' => $request->presence]);
+        return ['status' => $room->update(['presence' => $request->presence])];
+    }
+
+    /**
+     * Return the room information
+     *
+     * @return array
+     */
+    public function houseRoom(RoomInfo $request)
+    {
+        $room = $request->user()->rooms()->where('id', $request->id)->first();
+
+        if (!$room) {
+            return ['error' => 'Unauthorized'];
+        }
+
+        return $room;
+    }
+
+    /**
+     * Return the room information.
+     *
+     * @return array
+     */
+    public function userRoom(RoomInfo $request)
+    {
+        $room = $request->user()->house->rooms()->where('id', $request->id)->first();
+
+        if (!$room) {
+            return ['error' => 'Unauthorized'];
+        }
+
+        return $room;
     }
 
 }
