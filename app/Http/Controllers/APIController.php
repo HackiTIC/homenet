@@ -105,6 +105,7 @@ class APIController extends Controller
             'room_id' => null,
             'api_token' => str_random(60),
             'auth_token' => str_random(10),
+            'hysteresis_threshold' => 5,
         ]);
     }
 
@@ -130,6 +131,7 @@ class APIController extends Controller
             'presence' => false,
             'presence_timeout' => 60,
             'presence_activates_light' => false,
+            'light_threshold' => 100,
         ]);
     }
 
