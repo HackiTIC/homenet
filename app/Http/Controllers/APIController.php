@@ -113,7 +113,7 @@ class APIController extends Controller
      * @param  Request $request
      * @return array
      */
-    public function homeRooms(Request $request)
+    public function houseRooms(Request $request)
     {
         return optional($request->user())->rooms;
     }
