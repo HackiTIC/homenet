@@ -33,6 +33,6 @@ class HomeController extends Controller
      */
     public function variables()
     {
-        return view('home');
+        return view('variables');
     }
 }
