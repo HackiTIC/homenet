@@ -27,5 +27,8 @@ Route::as('house.')->prefix('house')->group(function () {
     Route::middleware('auth:house')->group(function () {
         Route::post('rooms', 'APIController@houseRooms')->name('rooms');
         Route::post('new_room', 'APIController@newRoom')->name('new_room');
+        Route::post('set_room_temp', 'APIController@setRoomTemp')->name('set_temp');
+        Route::post('set_room_light', 'APIController@setRoomLight')->name('set_light');
+        Route::post('set_room_presence', 'APIController@setRoomPresence')->name('set_presence');
     });
 });

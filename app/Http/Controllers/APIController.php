@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\NewHouse;
 //use App\Http\Requests\NewRoom;
 use App\Http\Requests\RoomRequest;
+use App\Http\Requests\SetRoomTemp;
+use App\Http\Requests\SetRoomLight;
+use App\Http\Requests\SetRoomPresence;
 use App\Http\Requests\CredentialsRequest;
 use App\Http\Requests\LinkHouse;
 
@@ -115,13 +118,51 @@ class APIController extends Controller
     }
 
     /**
-     * Return the room information.
+     * Set the room temperature.
      *
-     * @param  RoomRequest $request
-     * @return array
+     * @param SetRoomTemp $request
      */
-    public function room(RoomRequest $request)
+    public function setRoomTemp(SetRoomTemp $request)
     {
-        return $request->id;
+        $room = $request->user()->rooms()->where('id', $request->id)->first();
+
+        if (!$room) {
+            return ['error' => 'Unauthorized'];
+        }
+
+        return $room->update(['temp' => $request->temp]);
     }
+
+    /**
+     * Set the room light.
+     *
+     * @param SetRoomLight $request
+     */
+    public function setRoomLight(SetRoomLight $request)
+    {
+        $room = $request->user()->rooms()->where('id', $request->id)->first();
+
+        if (!$room) {
+            return ['error' => 'Unauthorized'];
+        }
+
+        return $room->update(['light' => $request->light]);
+    }
+
+    /**
+     * Set the room presence.
+     *
+     * @param SetRoomPresence $request
+     */
+    public function setRoomPresence(SetRoomPresence $request)
+    {
+        $room = $request->user()->rooms()->where('id', $request->id)->first();
+
+        if (!$room) {
+            return ['error' => 'Unauthorized'];
+        }
+
+        return $room->update(['presence' => $request->presence]);
+    }
+
 }
