@@ -10,6 +10,7 @@
                     @foreach (optional(auth()->user()->house)->rooms ? optional(auth()->user()->home)->rooms : [] as $room)
                         {!!
                             Charts::realtime(route('realtime.temp', $room), 1500, 'temperature', 'canvas-gauges')
+                                ->render()
                         !!}
                     @endforeach
                 </div>
