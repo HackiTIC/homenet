@@ -215,4 +215,36 @@ class APIController extends Controller
         return ['status' => $room->update(['name' => $request->name])];
     }
 
+    /**
+     * Set the room temp.
+     *
+     * @param SetRoomTemp $request
+     */
+    public function setAppRoomTemp(SetRoomTemp $request)
+    {
+        $room = $request->user()->house->rooms()->where('id', $request->id)->first();
+
+        if (!$room) {
+            return ['error' => 'Unauthorized'];
+        }
+
+        return ['status' => $room->update(['temp' => $request->temp])];
+    }
+
+    /**
+     * Set the room light.
+     *
+     * @param SetRoomLight $request
+     */
+    public function setAppRoomLight(SetRoomLight $request)
+    {
+        $room = $request->user()->house->rooms()->where('id', $request->id)->first();
+
+        if (!$room) {
+            return ['error' => 'Unauthorized'];
+        }
+
+        return ['status' => $room->update(['light' => $request->light])];
+    }
+
 }

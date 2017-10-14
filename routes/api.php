@@ -42,6 +42,8 @@ Route::as('app.')->prefix('app')->group(function () {
         Route::post('rooms', 'APIController@appRooms')->name('rooms');
         Route::post('room', 'APIController@userRoom')->name('room');
         Route::post('set_room_name', 'APIController@setRoomName')->name('set_name');
+        Route::post('set_room_temp', 'APIController@setAppRoomTemp')->name('set_temp');
+        Route::post('set_room_light', 'APIController@setAppRoomLight')->name('set_light');
     });
 });
 Route::as('house.')->prefix('house')->group(function () {
