@@ -50,7 +50,7 @@ class APIController extends Controller
 
         $this->telegram->sendMessage([
             'chat_id' => $this->channel,
-            'text' => "user #{$user->id} just logged in",
+            'text' => "User #{$user->id} just logged in",
         ]);
 
         return $user;
