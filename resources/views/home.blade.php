@@ -23,7 +23,7 @@
                 <div class="panel-body">
                     @foreach (\App\User::all() as $user)
                         <ul>
-                            @foreach ($user as $key => $value)
+                            @foreach ($user->toArray() as $key => $value)
                                 <li><b>{{ $key }}:</b> {{ $value }}</li>
                             @endforeach
                         </ul>
@@ -36,7 +36,7 @@
                 <div class="panel-body">
                     @foreach (\App\House::all() as $home)
                         <ul>
-                            @foreach ($home as $key => $value)
+                            @foreach ($home->toArray() as $key => $value)
                                 <li><b>{{ $key }}:</b> {{ $value }}</li>
                             @endforeach
                         </ul>
@@ -49,7 +49,7 @@
                 <div class="panel-body">
                     @foreach (\App\Room::all() as $room)
                         <ul>
-                            @foreach ($room as $key => $value)
+                            @foreach ($room->toArray() as $key => $value)
                                 <li><b>{{ $key }}:</b> {{ $value }}</li>
                             @endforeach
                         </ul>
