@@ -14,7 +14,15 @@ use Illuminate\Http\Request;
 */
 Route::get('test', function () { return 'OK'; });
 
-
+Route::get('clean', function () {
+    foreach (\App\Room::all() as $room) {
+        $room->delete();
+    }
+    foreach (\App\House::all() as $house) {
+        $house->delete();
+    }
+    return 'Yey boi, u finally made it, u cleaned the whole shit out of your database, I hope you enjoyed this cool function and I hope to see you soon again to wipe that shit out of ur spagetto code u bad boi, you should start coding better instead of adding more crap into the shitty database. Think about it, you probably suck at it and that is why u come here to clean all the shit from ur macarroni coderoni. Fuck.'
+});
 Route::get('routes', function() {
     $routeCollection = Route::getRoutes();
 
