@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {!! Charts::styles() !!}
+    {!! Charts::scripts() !!}
 </head>
 <body>
     <div id="app">
@@ -77,6 +78,5 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    {!! Charts::scripts() !!}
 </body>
 </html>
