@@ -7,19 +7,18 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Charts</div>
                 <div class="panel-body">
-                    @foreach (auth()->user()->house->rooms as $room)
-                        Chart :)
+                    @php
+                        $charts = [];
+                    @endphp
+                    @foreach (optional(auth()->user()->house)->rooms ? optional(auth()->user()->house)->rooms : [] as $room)
                         {!!
-
-$chart = Charts::realtime(url('/path/to/json'), 2000, 'gauge', 'google')
-            ->values([65, 0, 100])
-            ->labels(['First', 'Second', 'Third'])
-            ->responsive(false)
-            ->height(300)
-            ->width(0)
-            ->title("Permissions Chart")
-            ->valueName('value')->render()
+                            $chart = Charts::create('temp', 'canvas-gauges')
+                                ->values([0, 0, 100])
+                                ->render()
                         !!}
+                        @php
+                            array_push($charts, $chart);
+                        @endphp
                     @endforeach
                 </div>
             </div>
