@@ -11,6 +11,7 @@
                         Chart :)
                         @php
                             $chart = Charts::realtime(route('realtime.temp', $room), 1500, 'gauge', 'google')
+                                ->values([0, -55, 125]);
                         @endphp
                         {!! $chart->html() !!}
                         {!! $chart->script() !!}
