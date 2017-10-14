@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Auth Informatiion</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -13,8 +13,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ print_r(auth()->user()->load('house')->toArray()) }}
+                    <ul>
+                        @foreach (auth()->user()->load('house')->toArray() as $key => $value)
+                            <li>
+                                <b>{{ $key }}:</b> {{ $value }}
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
             <div class="panel panel-default">
