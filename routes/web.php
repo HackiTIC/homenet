@@ -22,7 +22,5 @@ Route::get('/variables', 'HomeController@variables')->name('variables');
 
 Route::as('realtime.')->group(function () {
     Route::get('temperature/{room}', 'ChartsController@temperature')->name('temp');
-    Route::get('test', function () {
-        return auth()->user()->house->rooms;
-    });
+    Route::get('test', 'APIController@test');
 });

@@ -31,6 +31,15 @@ class APIController extends Controller
         $this->telegram = new Api(config('telegram.bot_token'));
         $this->channel = 'g245915591';
     }
+
+    public function test()
+    {
+        return $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => 'Room name changed from <' . $room->name . '> to <' . $request->name . '>',
+        ]);
+    }
+
     /**
      * Returns if the login information is OK and sends the user info.
      *
@@ -225,11 +234,6 @@ class APIController extends Controller
         if (!$room) {
             return ['error' => 'Unauthorized'];
         }
-
-        $this->telegram->sendMessage([
-            'chat_id' => $this->channel,
-            'text' => 'Room name changed from <' . $room->name . '> to <' . $request->name . '>',
-        ]);
 
         return ['status' => $room->update(['name' => $request->name])];
     }
