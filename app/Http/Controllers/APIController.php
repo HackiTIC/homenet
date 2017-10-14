@@ -13,6 +13,7 @@ use App\Http\Requests\RoomInfo;
 use App\Http\Requests\SetRoomTemp;
 use App\Http\Requests\SetRoomLight;
 use App\Http\Requests\SetRoomPresence;
+use App\Http\Requests\SetRoomName;
 use App\Http\Requests\CredentialsRequest;
 use App\Http\Requests\LinkHouse;
 
@@ -196,6 +197,22 @@ class APIController extends Controller
         }
 
         return $room;
+    }
+
+    /**
+     * Set the room name.
+     *
+     * @param SetRoomName $request
+     */
+    public function setRoomName(SetRoomName $request)
+    {
+        $room = $request->user()->house->rooms()->where('id', $request->id)->first();
+
+        if (!$room) {
+            return ['error' => 'Unauthorized'];
+        }
+
+        return ['status' => $room->update(['name' => $request->name])];
     }
 
 }

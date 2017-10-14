@@ -41,6 +41,7 @@ Route::as('app.')->prefix('app')->group(function () {
         Route::post('link_house', 'APIController@linkHouse')->name('link_house');
         Route::post('rooms', 'APIController@appRooms')->name('rooms');
         Route::post('room', 'APIController@userRoom')->name('room');
+        Route::post('set_room_name', 'APIController@setRoomName')->name('set_name');
     });
 });
 Route::as('house.')->prefix('house')->group(function () {
