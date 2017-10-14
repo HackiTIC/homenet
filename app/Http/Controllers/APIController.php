@@ -7,7 +7,7 @@ use App\User;
 use App\House;
 use Illuminate\Http\Request;
 use App\Http\Requests\NewHouse;
-use App\Http\Requests\NewRoom;
+//use App\Http\Requests\NewRoom;
 use App\Http\Requests\RoomRequest;
 use App\Http\Requests\CredentialsRequest;
 use App\Http\Requests\LinkHouse;
@@ -80,11 +80,11 @@ class APIController extends Controller
      * @param  NewRoom $request
      * @return array
      */
-    public function newRoom(NewRoom $request)
+    public function newRoom(Request $request)
     {
         return $request->user()->rooms()->create([
             'name' => str_random(5),
-            'temp' => 25,
+            'temp' => 025.00,
             'light' => false,
             'presence' => false,
             'presence_timeout' => 60,
