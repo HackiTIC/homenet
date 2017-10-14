@@ -32,14 +32,6 @@ class APIController extends Controller
         $this->channel = '-245915591';
     }
 
-    public function test()
-    {
-        return $this->telegram->sendMessage([
-            'chat_id' => $this->channel,
-            'text' => 'Room name changed from',
-        ]);
-    }
-
     /**
      * Returns if the login information is OK and sends the user info.
      *
@@ -55,6 +47,11 @@ class APIController extends Controller
                 'error' => 'Bad credentials',
             ];
         }
+
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => "user #{$user->id} just logged in",
+        ]);
 
         return $user;
     }
@@ -81,6 +78,11 @@ class APIController extends Controller
 
         $house->update(['auth_token' => null]);
 
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => "linked house #{$house->id} to user #{$request->user()->id}",
+        ]);
+
         return ['status' => $request->user()->update(['house_id' => $house->id])];
     }
 
@@ -92,6 +94,11 @@ class APIController extends Controller
      */
     public function newHouse(Request $request)
     {
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => "Created a new house",
+        ]);
+
         return House::create([
             'set_temp' => 25.00,
             'room_id' => null,
@@ -108,8 +115,15 @@ class APIController extends Controller
      */
     public function newRoom(Request $request)
     {
+        $name = str_random(5);
+
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => "Created a new room <${$name}>",
+        ]);
+
         return $request->user()->rooms()->create([
-            'name' => str_random(5),
+            'name' => $name,
             'temp' => 025.00,
             'light' => false,
             'presence' => false,
@@ -155,6 +169,11 @@ class APIController extends Controller
             return ['error' => 'Unauthorized'];
         }
 
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => "Updated room #{$room->id} temperature from <{$room->temp}> to <${$request->temp}>",
+        ]);
+
         return ['status' => $room->update(['temp' => $request->temp])];
     }
 
@@ -171,6 +190,11 @@ class APIController extends Controller
             return ['error' => 'Unauthorized'];
         }
 
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => "Updated room #{$room->id} light from <{$room->light}> to <${$request->light}>",
+        ]);
+
         return ['status' => $room->update(['light' => $request->light])];
     }
 
@@ -186,6 +210,11 @@ class APIController extends Controller
         if (!$room) {
             return ['error' => 'Unauthorized'];
         }
+
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => "Updated room #{$room->id} presence from <{$room->presence}> to <${$request->presence}>",
+        ]);
 
         return ['status' => $room->update(['presence' => $request->presence])];
     }
@@ -235,6 +264,11 @@ class APIController extends Controller
             return ['error' => 'Unauthorized'];
         }
 
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => 'Room name changed from <' . $room->name . '> to <' . $request->name . '>',
+        ]);
+
         return ['status' => $room->update(['name' => $request->name])];
     }
 
@@ -245,6 +279,11 @@ class APIController extends Controller
      */
     public function setHomeSettings(SetHomeSettings $request)
     {
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => 'Updated home #' . $request->user()->house->id . ' settings',
+        ]);
+
         return ['status' => $request->user()->house()->update($request->only(['set_temp', 'room_id']))];
     }
 
@@ -260,6 +299,11 @@ class APIController extends Controller
         if (!$room) {
             return ['error' => 'Unauthorized'];
         }
+
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => "Updated room #{$room->id} light from <{$room->light}> to <${$request->light}>",
+        ]);
 
         return ['status' => $room->update(['light' => $request->light])];
     }
@@ -277,6 +321,11 @@ class APIController extends Controller
             return ['error' => 'Unauthorized'];
         }
 
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => "Updated room #{$room->id} presence timeout from <{$room->presence_timeout}> to <${$request->presence_timeout}>",
+        ]);
+
         return ['status' => $room->update(['presence_timeout' => $request->presence_timeout])];
     }
 
@@ -292,6 +341,11 @@ class APIController extends Controller
         if (!$room) {
             return ['error' => 'Unauthorized'];
         }
+
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => "Updated room #{$room->id} presence activates light from <{$room->presence_activates_light}> to <${$request->presence_activates_light}>",
+        ]);
 
         return ['status' => $room->update(['presence_activates_light' => $request->presence_activates_light])];
     }
