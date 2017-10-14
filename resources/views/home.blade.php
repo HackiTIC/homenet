@@ -9,13 +9,17 @@
                 <div class="panel-body">
                     @foreach (auth()->user()->house->rooms as $room)
                         Chart :)
-                        @php
-                            $chart = Charts::realtime(route('realtime.temp', $room), 1500, 'temp', 'canvas-gauges')
-                                ->values([65, 0, 100])
-                                ->labels(['First', 'Second', 'Third']);
-                        @endphp
-                        {!! $chart->html() !!}
-                        {!! $chart->script() !!}
+                        {!!
+
+$chart = Charts::realtime(url('/path/to/json'), 2000, 'gauge', 'google')
+            ->values([65, 0, 100])
+            ->labels(['First', 'Second', 'Third'])
+            ->responsive(false)
+            ->height(300)
+            ->width(0)
+            ->title("Permissions Chart")
+            ->valueName('value')->render()
+                        !!}
                     @endforeach
                 </div>
             </div>
