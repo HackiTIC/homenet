@@ -10,7 +10,7 @@
                     @foreach (auth()->user()->house->rooms as $room)
                         Chart :)
                         @php
-                            $chart = Charts::realtime(route('realtime.temp', $room), 1500, 'temp', 'canvas-gauges')
+                            $chart = Charts::realtime(route('realtime.temp', $room), 1500, 'gauge', 'google')
                         @endphp
                         {!! $chart->html() !!}
                         {!! $chart->script() !!}
