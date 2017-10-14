@@ -36,7 +36,7 @@ class APIController extends Controller
     {
         return $this->telegram->sendMessage([
             'chat_id' => $this->channel,
-            'text' => 'Room name changed from <' . $room->name . '> to <' . $request->name . '>',
+            'text' => 'Room name changed from',
         ]);
     }
 
