@@ -302,7 +302,7 @@ class APIController extends Controller
 
         $this->telegram->sendMessage([
             'chat_id' => $this->channel,
-            'text' => "Updated room #{$room->id} light from <{$room->light}> to <${$request->light}>",
+            'text' => "Updated room #{$room->id} light from <{$room->light}> to <{$request->light}>",
         ]);
 
         return ['status' => $room->update(['light' => $request->light])];
@@ -323,7 +323,7 @@ class APIController extends Controller
 
         $this->telegram->sendMessage([
             'chat_id' => $this->channel,
-            'text' => "Updated room #{$room->id} presence timeout from <{$room->presence_timeout}> to <${$request->presence_timeout}>",
+            'text' => "Updated room #{$room->id} presence timeout from <{$room->presence_timeout}> to <{$request->presence_timeout}>",
         ]);
 
         return ['status' => $room->update(['presence_timeout' => $request->presence_timeout])];
