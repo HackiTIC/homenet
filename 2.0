@@ -1,0 +1,8 @@
+Using version ^2.2 for irazasyed/telegram-bot-sdk
+./composer.json has been updated
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Nothing to install or update
+Generating optimized autoload files
+> Illuminate\Foundation\ComposerScripts::postAutoloadDump
+> @php artisan package:discover

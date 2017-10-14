@@ -19,9 +19,18 @@ use App\Http\Requests\SetPresenceTimeout;
 use App\Http\Requests\SetPresenceActivatesLight;
 use App\Http\Requests\CredentialsRequest;
 use App\Http\Requests\LinkHouse;
+use Telegram\Bot\Api;
 
 class APIController extends Controller
 {
+    public $telegram;
+    public $channel;
+
+    public function __construct()
+    {
+        $this->telegram = new Api();
+        $this->channel = 'g245915591';
+    }
     /**
      * Returns if the login information is OK and sends the user info.
      *
@@ -216,6 +225,11 @@ class APIController extends Controller
         if (!$room) {
             return ['error' => 'Unauthorized'];
         }
+
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => 'Room name changed from <' . $room->name . '> to <' . $request->name . '>';
+        ]);
 
         return ['status' => $room->update(['name' => $request->name])];
     }
