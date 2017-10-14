@@ -43,6 +43,8 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ route('home') }}">Home</a></li>
+                        <li><a href="{{ route('variables') }}">Variables</a></li>
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
