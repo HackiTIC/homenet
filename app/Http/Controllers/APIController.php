@@ -278,4 +278,15 @@ class APIController extends Controller
         return ['status' => $room->update(['presence_activates_light' => $request->presence_activates_light])];
     }
 
+    /**
+     * Return the information of the house.
+     *
+     * @param  Request $request
+     * @return array
+     */
+    public function houseInfo(Request $request)
+    {
+        return $request->user();
+    }
+
 }
