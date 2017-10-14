@@ -15,7 +15,7 @@ use App\Http\Requests\SetRoomLight;
 use App\Http\Requests\SetRoomPresence;
 use App\Http\Requests\SetRoomName;
 use App\Http\Requests\SetPresenceTimeout;
-use App\Http\Requests\setPresenceActivatesLight;
+use App\Http\Requests\SetPresenceActivatesLight;
 use App\Http\Requests\CredentialsRequest;
 use App\Http\Requests\LinkHouse;
 
