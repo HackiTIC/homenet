@@ -16,7 +16,7 @@
                     <ul>
                         @foreach (auth()->user()->load('house')->toArray() as $key => $value)
                             <li>
-                                <b>{{ $key }}:</b> {{ $value }}
+                                <b>{{ $key }}:</b> {{ is_array($value) ? print_r($value) : $value }}
                             </li>
                         @endforeach
                     </ul>
