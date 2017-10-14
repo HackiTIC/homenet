@@ -13,8 +13,25 @@ use Illuminate\Http\Request;
 |
 */
 Route::get('test', function () { return 'OK'; });
-Route::get('routes', function () {
-    dd(Route::getRoutes());
+
+
+Route::get('routes', function() {
+    $routeCollection = Route::getRoutes();
+
+    echo "<table style='width:100%'>";
+    echo "<tr>";
+        echo "<td width='10%'><h4>HTTP Method</h4></td>";
+        echo "<td width='10%'><h4>Route</h4></td>";
+        echo "<td width='80%'><h4>Corresponding Action</h4></td>";
+    echo "</tr>";
+    foreach ($routeCollection as $value) {
+        echo "<tr>";
+            echo "<td>" . $value->getMethods()[0] . "</td>";
+            echo "<td>" . $value->getPath() . "</td>";
+            echo "<td>" . $value->getActionName() . "</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
 });
 Route::as('app.')->prefix('app')->group(function () {
     Route::post('login', 'APIController@credentials')->name('login');
