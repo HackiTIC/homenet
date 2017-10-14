@@ -14,6 +14,8 @@ use App\Http\Requests\SetRoomTemp;
 use App\Http\Requests\SetRoomLight;
 use App\Http\Requests\SetRoomPresence;
 use App\Http\Requests\SetRoomName;
+use App\Http\Requests\SetPresenceTimeout;
+use App\Http\Requests\setPresenceActivatesLight;
 use App\Http\Requests\CredentialsRequest;
 use App\Http\Requests\LinkHouse;
 
@@ -245,6 +247,38 @@ class APIController extends Controller
         }
 
         return ['status' => $room->update(['light' => $request->light])];
+    }
+
+    /**
+     * Set the presence timeout of the room.
+     *
+     * @param SetPresenceTimeout $request
+     */
+    public function setPresenceTimeout(SetPresenceTimeout $request)
+    {
+        $room = $request->user()->house->rooms()->where('id', $request->id)->first();
+
+        if (!$room) {
+            return ['error' => 'Unauthorized'];
+        }
+
+        return ['status' => $room->update(['presence_timeout' => $request->presence_timeout])];
+    }
+
+    /**
+     * Set the presence activates light of the room.
+     *
+     * @param SetPresenceActivatesLight $request
+     */
+    public function setPresenceActivatesLight(SetPresenceActivatesLight $request)
+    {
+        $room = $request->user()->house->rooms()->where('id', $request->id)->first();
+
+        if (!$room) {
+            return ['error' => 'Unauthorized'];
+        }
+
+        return ['status' => $room->update(['presence_activates_light' => $request->presence_activates_light])];
     }
 
 }
