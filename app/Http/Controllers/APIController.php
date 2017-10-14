@@ -28,7 +28,7 @@ class APIController extends Controller
 
     public function __construct()
     {
-        $this->telegram = new Api();
+        $this->telegram = new Api(config('telegram.bot_token'));
         $this->channel = 'g245915591';
     }
     /**
