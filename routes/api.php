@@ -20,15 +20,16 @@ Route::get('routes', function() {
 
     echo "<table style='width:100%'>";
     echo "<tr>";
-        echo "<td width='10%'><h4>HTTP Method</h4></td>";
-        echo "<td width='10%'><h4>Route</h4></td>";
-        echo "<td width='80%'><h4>Corresponding Action</h4></td>";
+        echo "<td width='10%'><h4>Route name</h4></td>";
+        echo "<td width='10%'><h4>HTTP method</h4></td>";
+        echo "<td width='80%'><h4>API endpoint</h4></td>";
     echo "</tr>";
-    foreach ($routeCollection as $value) {
+    //dd($routeCollection->getRoutesByName());
+    foreach ($routeCollection->getRoutesByName() as $key => $value) {
         echo "<tr>";
-            echo "<td>" . $value->getMethods()[0] . "</td>";
-            echo "<td>" . $value->getPath() . "</td>";
-            echo "<td>" . $value->getActionName() . "</td>";
+            echo "<td>" . $key . "</td>";
+            echo "<td>" . $value->methods[0] . "</td>";
+            echo "<td>" . $value->uri . "</td>";
         echo "</tr>";
     }
     echo "</table>";
