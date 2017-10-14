@@ -22,6 +22,7 @@ class CreateRoomsTable extends Migration
             $table->boolean('presence');
             $table->integer('presence_timeout');
             $table->boolean('presence_activates_light');
+            $table->integer('light_threshold');
             $table->timestamps();
         });
     }

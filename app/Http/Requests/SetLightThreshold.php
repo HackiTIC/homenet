@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SetHomeSettings extends FormRequest
+class SetLightThreshold extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class SetHomeSettings extends FormRequest
     public function rules()
     {
         return [
-            'set_temp' => 'required',
-            'room_id' => 'nullable',
-            'hysteresis_threshold' => 'required',
+            'light_threshold' => 'required',
         ];
     }
 }

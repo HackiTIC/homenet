@@ -19,6 +19,7 @@ use App\Http\Requests\SetPresenceTimeout;
 use App\Http\Requests\SetPresenceActivatesLight;
 use App\Http\Requests\CredentialsRequest;
 use App\Http\Requests\LinkHouse;
+use App\Http\Requests\SetLightThreshold;
 use Telegram\Bot\Api;
 
 class APIController extends Controller
@@ -284,7 +285,13 @@ class APIController extends Controller
             'text' => 'Updated home #' . $request->user()->house->id . ' settings',
         ]);
 
-        return ['status' => $request->user()->house()->update($request->only(['set_temp', 'room_id']))];
+        return [
+            'status' => $request->user()->house()->update(
+                $request->only([
+                    'set_temp', 'room_id', 'hysteresis_threshold'
+                ])
+            )
+        ];
     }
 
     /**
@@ -348,6 +355,28 @@ class APIController extends Controller
         ]);
 
         return ['status' => $room->update(['presence_activates_light' => $request->presence_activates_light])];
+    }
+
+    /**
+     * Set the light threshold.
+     *
+     * @param SetLightThreshold $request
+     */
+    public function setLightThreshold(SetLightThreshold $request)
+    {
+
+        $room = $request->user()->house->rooms()->where('id', $request->id)->first();
+
+        if (!$room) {
+            return ['error' => 'Unauthorized'];
+        }
+
+        $this->telegram->sendMessage([
+            'chat_id' => $this->channel,
+            'text' => "Updated room #{$room->id} light threshold from <{$room->light_threshold}> to <{$request->light_threshold}>",
+        ]);
+
+        return ['status' => $room->update(['light_threshold' => $request->light_threshold])];
     }
 
     /**

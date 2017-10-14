@@ -19,6 +19,7 @@ class CreateHousesTable extends Migration
             $table->integer('room_id')->nullable();
             $table->string('api_token');
             $table->string('auth_token')->nullable();
+            $table->float('hysteresis_threshold', 4, 2);
             $table->timestamps();
         });
     }

@@ -49,7 +49,8 @@ Route::as('app.')->prefix('app')->group(function () {
         Route::post('set_home_settings', 'APIController@setHomeSettings')->name('set_home_settings');
         Route::post('set_room_light', 'APIController@setAppRoomLight')->name('set_light');
         Route::post('set_room_presence_timeout', 'APIController@setPresenceTimeout')->name('presence_timeout');
-        Route::post('set_room_presence_activates_light', 'APIController@setPresenceActivatesLight')->name('presence_activates_light');
+        Route::post('set_room_presence_activates_light', 'APIController@setPresenceActivatesLight')->name('presence_activates_light')->name('presence_activates_light');
+        Route::post('set_room_light_threshold', 'APIController@setLightThreshold')->name('light_threshold');
     });
 });
 Route::as('house.')->prefix('house')->group(function () {
