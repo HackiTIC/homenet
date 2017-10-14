@@ -17,6 +17,33 @@
                     {{ print_r(auth()->user()->load('house')->toArray()) }}
                 </div>
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Users</div>
+
+                <div class="panel-body">
+                    @foreach (\App\User::all() as $user)
+                        {{ print_r($user) }}
+                    @endforeach
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Homes</div>
+
+                <div class="panel-body">
+                    @foreach (\App\Home::all() as $home)
+                        {{ print_r($home) }}
+                    @endforeach
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Users</div>
+
+                <div class="panel-body">
+                    @foreach (\App\Room::all() as $room)
+                        {{ print_r($room) }}
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 </div>
