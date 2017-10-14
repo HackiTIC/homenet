@@ -15,11 +15,6 @@
                     @endif
 
                     {{ print_r(auth()->user()->load('house')->toArray()) }}
-                    <br>
-                    <br>
-                    @foreach (Route::getRoutes() as $route)
-                        {{ print_r($route) }}
-                    @endforeach
                 </div>
             </div>
         </div>
