@@ -227,7 +227,7 @@ class APIController extends Controller
      */
     public function setHomeSettings(SetHomeSettings $request)
     {
-        return ['status' => $request->user()->house()->update($request->only(['temp', 'room_id']))];
+        return ['status' => $request->user()->house()->update($request->only(['set_temp', 'room_id']))];
     }
 
     /**

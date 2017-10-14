@@ -24,7 +24,7 @@ class SetHomeSettings extends FormRequest
     public function rules()
     {
         return [
-            'temp' => 'required',
+            'set_temp' => 'required',
             'room_id' => 'nullable',
         ];
     }
