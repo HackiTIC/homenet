@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Charts</div>
                 <div class="panel-body">
@@ -11,6 +11,7 @@
                         {!!
                             Charts::realtime(route('realtime.temp', $room), 1500, 'line', 'highcharts')
                             ->title($room->name)
+                            ->elementLabel('Temperature')
                             ->render()
                         !!}
                     @endforeach
