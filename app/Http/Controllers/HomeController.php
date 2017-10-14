@@ -17,11 +17,21 @@ class HomeController extends Controller
     }
 
     /**
+     * Returns the index with charts.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        return view('home');
+    }
+
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function variables()
     {
         return view('home');
     }
