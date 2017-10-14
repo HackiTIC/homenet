@@ -119,7 +119,7 @@ class APIController extends Controller
      */
     public function houseRooms(Request $request)
     {
-        return optional($request->user())->rooms->only([
+        return $request->user()->rooms->map->only([
             'id', 'house_id', 'light', 'presence', 'presence_activates_light', 'presence_timeout', 'temp'
         ]);
     }
