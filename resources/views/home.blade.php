@@ -11,7 +11,8 @@
                         Chart :)
                         @php
                             $chart = Charts::realtime(route('realtime.temp', $room), 1500, 'temp', 'canvas-gauges')
-                                ->values([0, -55, 125]);
+                                ->values([65, 0, 100])
+                                ->labels(['First', 'Second', 'Third']);
                         @endphp
                         {!! $chart->html() !!}
                         {!! $chart->script() !!}
