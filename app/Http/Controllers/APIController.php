@@ -7,6 +7,7 @@ use App\User;
 use App\House;
 use Illuminate\Http\Request;
 use App\Http\Requests\NewHouse;
+use App\Http\Requests\NewRoom;
 use App\Http\Requests\RoomRequest;
 use App\Http\Requests\CredentialsRequest;
 use App\Http\Requests\LinkHouse;
