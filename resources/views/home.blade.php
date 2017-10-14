@@ -7,18 +7,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Charts</div>
                 <div class="panel-body">
-                    @php
-                        $charts = [];
-                    @endphp
                     @foreach (optional(auth()->user()->house)->rooms ? optional(auth()->user()->house)->rooms : [] as $room)
-                        {!!
-                            $chart = Charts::create('temp', 'canvas-gauges')
-                                ->values([0, 0, 100])
-                                ->render()
-                        !!}
-                        @php
-                            array_push($charts, $chart);
-                        @endphp
+                        {!! Charts::realtime(route('statistics.temperature', $chart), 1500, 'line', 'highcharts') ->render() !!}
                     @endforeach
                 </div>
             </div>
