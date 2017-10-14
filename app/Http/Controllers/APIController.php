@@ -84,9 +84,9 @@ class APIController extends Controller
     {
         return $request->user()->rooms()->create([
             'name' => str_random(5),
-            'temp' => $request->temp,
-            'light' => $request->light,
-            'presence' => $request->presence,
+            'temp' => 25,
+            'light' => false,
+            'presence' => false,
             'presence_timeout' => 60,
             'presence_activates_light' => false,
         ]);

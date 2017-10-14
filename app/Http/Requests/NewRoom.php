@@ -23,10 +23,6 @@ class NewRoom extends FormRequest
      */
     public function rules()
     {
-        return [
-            'temp' => 'required',
-            'light' => 'required',
-            'presence' => 'required',
-        ];
+        return [];
     }
 }
